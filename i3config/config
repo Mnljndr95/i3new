@@ -58,6 +58,7 @@ bindsym $mod+d exec rofi -show combi -opacity "30" -theme slate -show-icons
 
 #screenshot tool
 bindsym Print exec mate-panel-screenshot
+bindsym Shift+Print exec flameshot
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -142,10 +143,15 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# move focused workspace between monitors
+bindsym $mod+x move workspace to output right
+bindsym $mod+Ctrl+x move workspace to output left
+
 #apps anchored to a workspace
 assign [class="Evolution"] 3
 assign [class="Audacity"] 4
 assign [class="Conky"] 5
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -199,6 +205,12 @@ exec_always feh --bg-scale '/home/olif/Pictures/thrall.jpeg'
 exec --no-startup-id evolution
 exec_always compton -f
 exec conky
+exec clipit
+
+#Screenshot app
+exec flameshot
+#notification
+exec lxqt-notificationd
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
